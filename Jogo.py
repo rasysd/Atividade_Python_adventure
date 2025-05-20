@@ -96,7 +96,7 @@ def criar_per():
         else:
             print("\n ESCOLHA INVALIDA")
 
-personagem, genero, arquetipo, atributos = criar_per() #Quase enlouqueço fazendo isso misericordia
+personagem, genero, arquetipo, atributos = criar_per() #Quase que eu endoido fazendo isso misericordia
 limpar_ficha()
 
 print(f"\n {personagem}, está inciando sua aventura.")
