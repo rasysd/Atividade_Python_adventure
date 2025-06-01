@@ -100,3 +100,86 @@ personagem, genero, arquetipo, atributos = criar_per() #Quase enlouqueço fazend
 limpar_ficha()
 
 print(f"\n {personagem}, está inciando sua aventura.")
+
+
+
+#combate (luiz)
+
+import random
+
+def rolar_dado(lados):
+    return random.randint(1, lados)
+
+
+class personagem:
+    def __init__(self, nome, hp, força, defesa):
+        self.nome = nome
+        self.hp = hp
+        self.força = força
+        self.defesa = defesa
+
+    def atacar(self, alvo):
+        rolagem_ataque = rolar_dado(20)
+        print(f"{self.nome} rola {rolagem_ataque} para atacar {alvo}.")
+
+        if rolagem_ataque >= 10:
+            dano = rolar_dado(8) + self.força
+            alvo.hp -= dano
+            print(f"{self.nome} causa {dano} de dano em {alvo.nome}, na cara não!!.")
+        else:
+            print("erooou!!!")
+
+
+    def estar_vivo(self):
+        return self.hp > 0
+    
+nome_heroi = input("Diga seu nome:").strip()
+if nome_heroi == "":
+    nome_heroi = "cleiton"
+
+
+jogador = personagem(nome_heroi, hp=30, força=3, defesa=2)
+inimigo = personagem("Esqueleto", hp=20, força=2, defesa=1)
+
+
+if rolar_dado(20) > rolar_dado(20):
+    turno = [jogador, inimigo]
+else:
+    turno = [inimigo, jogador]
+
+
+while jogador.estar_vivo() and inimigo.estar_vivo():
+    atacante = turno[0]
+    defensor = turno[1]
+
+
+    if atacante == jogador:
+        acao = input("Digite 'A' para atacar ou 'F' para fugir: ").strip().upper()
+        if acao == "F":
+            chance_fuga = rolar_dado(20)
+            if chance_fuga >=10:
+                print("Amarelou legal!!")
+                break
+            else:
+                print("Vai amarelar??")
+                atacante.atacar(defensor)
+        elif acao == "A":
+            atacante.atacar(defensor)
+        else:
+            print("A ou F porra!!")
+    else:
+        atacante.atacar(defensor)
+
+
+    turno.reverse()
+
+
+    print(f"{jogador.nome}: {jogador.hp} HP | {inimigo.nome}: {inimigo.hp} HP\n")
+
+
+if jogador.estar_vivo() and inimigo.estar_vivo():
+    print("Saiu com o rabo entre as perna.")
+elif jogador.estar_vivo():
+    print(f"{jogador} saiu por cima!!")
+else:
+    print(f"{ jogador.nome} Foi jogar no vasco!")
