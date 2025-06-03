@@ -89,11 +89,11 @@ class Personagem:
     def __init__(self, nome, classe, atributos, modificadores):
         self.nome = nome
         self.classe = classe
-        self.hp = 20 + atributos["Constituição"]
-        self.defesa = modificadores["Constituição"]
+        self.defesa = 10 + modificadores["Constituição"]
         self.atributos = atributos
         self.modificadores = modificadores
         self.atributo_ataque = self.definir_atributo_ataque()
+        self.hp = self.vida_inicial()
 
     def definir_atributo_ataque(self):
         return {
@@ -103,6 +103,17 @@ class Personagem:
             "Paladino": "Sabedoria",
             "Bruxo": "Carisma"
         }.get(self.classe, "Força")  # Default para Força caso algo dê errado
+    
+    def vida_inicial(self):
+        base_hp_por_classe = {
+            "Guerreiro": 35,
+            "Arqueiro": 30,
+            "Mago": 20,
+            "Paladino": 40,
+            "Bruxo": 25
+        }
+        base_hp = base_hp_por_classe.get(self.classe, 20)
+        return base_hp + self.modificadores["Constituição"]
 
     def atacar(self, alvo):
         rolagem = rolar_dado(20)
@@ -141,7 +152,7 @@ def jogo():
         if atacante == jogador:
             acao = input("Digite 'A' para atacar ou 'F' para fugir: ").strip().upper()
             if acao == "F":
-                if rolar_dado(20) >= 10:
+                if rolar_dado(20) >= 15:
                     print("Você fugiu com sucesso!")
                     return
                 else:
