@@ -89,7 +89,7 @@ class Personagem:
     def __init__(self, nome, classe, atributos, modificadores):
         self.nome = nome
         self.classe = classe
-        self.defesa = 10 + modificadores["Constituição"]
+        self.defesa = 10 + modificadores["Constituição"] #vai utilizar a contituição como defesa
         self.atributos = atributos
         self.modificadores = modificadores
         self.atributo_ataque = self.definir_atributo_ataque()
@@ -132,13 +132,8 @@ class Personagem:
         return self.hp > 0
 
 # Fluxo do jogo
-def jogo():
-    nome, classe, atributos, modificadores = criar_personagem()
-    jogador = Personagem(nome, classe, atributos, modificadores)
-
-    # inimigo básico genérico para teste
-    inimigo = Personagem("Esqueleto", "Guerreiro", {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6},
-                         {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2})
+def combate(inimigo):
+    global jogador
 
     if rolar_dado(20) > rolar_dado(20):
         turno = [jogador, inimigo]
@@ -173,5 +168,14 @@ def jogo():
     else:
         print(f"{jogador.nome} foi derrotado...")
 
-# Iniciar o jogo
-jogo()
+nome, classe, atributos, modificadores = criar_personagem()
+jogador = Personagem(nome, classe, atributos, modificadores) #recebe Jogador
+
+inimigo_test = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
+    "Esqueleto","Arqueiro", #muda o nome da criatura e sua classe
+    {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6}, 
+    {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2} #Muda apenas os parametros
+)
+
+# Iniciar o combate
+combate(inimigo_test) #Sempre q for iniciar o combate la no inimigo test muda pra a criatura especifica
