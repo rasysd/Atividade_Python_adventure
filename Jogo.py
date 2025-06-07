@@ -94,7 +94,7 @@ def narrar(texto, atraso=2):
     print("\n")
 
 introducao_reino = """
-Capítulo 1: Nascimento
+Capítulo 1: Surgimento
 
 
 Em meio a colinas verdesjantes e vastos campos de lavanda, ergue-se o Reino de Velmir. 
@@ -225,9 +225,9 @@ def escolher_opcao(pergunta, opcoes):
         except ValueError:
             print("Por favor, digite um número.")
 
-# Parte 2: Abordagem dos Soldados
+#adicionei essa segunda parte aqui, teve um problema no final, mas ta funcionando 
 parte2 = """
-Ao adentrar no reino, alguém parece ter alertado ao rei de um novo visitante.
+Ao adentrar no reino, alguém parece ter alertado ao rei a respeito de um novo visitante.
 Dois soldados surgem pela trilha em suas armaduras de prata azulada, com o brasão do sol dourado no peito.
 
 Soldado alto:
@@ -280,7 +280,7 @@ resposta3 = escolher_opcao(pergunta3, opcoes3)
 if resposta3 == 1:
     narrar("Soldado bonitão: — Honesto. Raro.")
 elif resposta3 == 2:
-    narrar("Soldado alto: — Um coração nobre. Isso agrada o rei.")
+    narrar("Soldado bonitão: — Um coração nobre. Isso agrada o rei.")
 elif resposta3 == 3:
     narrar("Soldado alto: — Mistérios atraem reis tanto quanto guerreiros.")
 
