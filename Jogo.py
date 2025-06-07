@@ -84,6 +84,37 @@ def criar_personagem():
 
     return nome, classe, atributos_personagem, modificadores
 
+
+import time
+
+def narrar(texto, atraso=2):
+    for linha in texto.split('\n'):
+        print(linha)
+        time.sleep(atraso)
+    print("\n")
+
+introducao_reino = """
+Capítulo 1: Nascimento
+
+
+Em meio a colinas verdesjantes e vastos campos de lavanda, ergue-se o Reino de Velmir. 
+Um lugar onde o tempo parece respeitar a natureza e os ventos sussurram histórias de eras antigas.
+
+Árvores milenares cobrem a paisagem, com copas tão largas que ocultam a luz do sol, 
+criando um manto de sombra fresca e constante. Animais mágicos percorrem as florestas — 
+cervos com chifres de cristal, pássaros de penas douradas e até felinos com olhos cintilantes como estrelas.
+
+No coração do reino, reluzente como uma joia, ergue-se o castelo de mármore branco e torres douradas: 
+o Castelo de Elarion. Os telhados escarlates brilham à luz do dia, guardando os segredos de gerações de reis e magos. 
+Riquezas de todo o mundo repousam em seus cofres e bibliotecas arcanas, mas é sua sabedoria, dizem, o maior tesouro.
+
+E é para esse mundo encantado que você foi chamado. Um destino ainda não escrito... mas prestes a começar.
+"""
+
+# Executar a narração
+narrar(introducao_reino, atraso=2)
+
+
 # Classe Personagem
 class Personagem:
     def __init__(self, nome, classe, atributos, modificadores):
@@ -170,6 +201,91 @@ def combate(inimigo):
 
 nome, classe, atributos, modificadores = criar_personagem()
 jogador = Personagem(nome, classe, atributos, modificadores) #recebe Jogador
+
+import time
+
+def narrar(texto, atraso=3):
+    for linha in texto.strip().split('\n'):
+        print(linha)
+        time.sleep(atraso)
+    print()
+
+def escolher_opcao(pergunta, opcoes):
+    print(pergunta)
+    for i, opcao in enumerate(opcoes, 1):
+        print(f"{i}. {opcao}")
+    
+    while True:
+        try:
+            escolha = int(input("Digite o número da sua escolha: "))
+            if 1 <= escolha <= len(opcoes):
+                return escolha
+            else:
+                print("Escolha inválida. Tente novamente.")
+        except ValueError:
+            print("Por favor, digite um número.")
+
+# Parte 2: Abordagem dos Soldados
+parte2 = """
+Ao adentrar no reino, alguém parece ter alertado ao rei de um novo visitante.
+Dois soldados surgem pela trilha em suas armaduras de prata azulada, com o brasão do sol dourado no peito.
+
+Soldado alto:
+— Ei, você aí! Você é quem foi chamado pelo rei Julian IV, certo?
+
+Soldado bonitão:
+— Venha conosco. O rei deseja conhecê-lo pessoalmente. Mas antes... temos algumas perguntas.
+"""
+
+narrar(parte2)
+
+pergunta1 = "De onde você vem, forasteiro?"
+opcoes1 = [
+    "Das montanhas cinzentas, onde os ventos cantam entre as pedras.",
+    "Do litoral sul, onde os pescadores vendem histórias junto com o peixe.",
+    "De lugar algum, caminho onde o destino me leva."
+]
+resposta1 = escolher_opcao(pergunta1, opcoes1)
+
+if resposta1 == 1:
+    narrar("Soldado alto: — As montanhas? Gente dura vive por lá. Gostei.")
+elif resposta1 == 2:
+    narrar("Soldado bonitão: — Ah! Gosto de histórias. Tomara que traga uma boa.")
+elif resposta1 == 3:
+    narrar("Soldado alto: — Um andarilho, hein? O rei adora enigmas...")
+
+pergunta2 = "Qual arma prefere usar?"
+opcoes2 = [
+    "Espada longa, fiel e direta.",
+    "Cajado de carvalho, canal da minha magia.",
+    "Adagas ocultas. Rápidas, silenciosas."
+]
+resposta2 = escolher_opcao(pergunta2, opcoes2)
+
+if resposta2 == 1:
+    narrar("Soldado alto: — Um guerreiro de verdade! Boa escolha.")
+elif resposta2 == 2:
+    narrar("Soldado alto: — Magia... perigosa, mas útil.")
+elif resposta2 == 3:
+    narrar("Soldado bonitão: — Silêncio pode matar mais que um grito. Interessante.")
+
+pergunta3 = "Por que busca servir o rei?"
+opcoes3 = [
+    "Desejo glória e ouro.",
+    "Para proteger inocentes.",
+    "Por respostas que só o trono pode me dar."
+]
+resposta3 = escolher_opcao(pergunta3, opcoes3)
+
+if resposta3 == 1:
+    narrar("Soldado bonitão: — Honesto. Raro.")
+elif resposta3 == 2:
+    narrar("Soldado alto: — Um coração nobre. Isso agrada o rei.")
+elif resposta3 == 3:
+    narrar("Soldado alto: — Mistérios atraem reis tanto quanto guerreiros.")
+
+narrar("Os soldados trocam olhares e assentem com a cabeça.\nSoldado alto: — Muito bem. Siga-nos. Sua audiência com o rei o aguarda.\n")
+
 
 inimigo_test = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
     "Esqueleto","Arqueiro", #muda o nome da criatura e sua classe
