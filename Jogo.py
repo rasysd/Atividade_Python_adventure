@@ -286,7 +286,7 @@ elif resposta3 == 3:
 
 narrar("Os soldados trocam olhares e assentem com a cabeça.\nSoldado alto: — Muito bem. Siga-nos. Sua audiência com o rei o aguarda.\n")
 
-
+#resolvendo ak
 
 inimigo_test = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
     "Esqueleto","Arqueiro", #muda o nome da criatura e sua classe
