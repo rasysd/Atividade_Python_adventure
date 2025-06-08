@@ -84,6 +84,9 @@ def criar_personagem():
 
     return nome, classe, atributos_personagem, modificadores
 
+nome, classe, atributos, modificadores = criar_personagem()
+jogador = Personagem(nome, classe, atributos, modificadores) #recebe Jogador
+
 
 import time
 
@@ -198,9 +201,6 @@ def combate(inimigo):
         print(f"{jogador.nome} venceu a batalha!")
     else:
         print(f"{jogador.nome} foi derrotado...")
-
-nome, classe, atributos, modificadores = criar_personagem()
-jogador = Personagem(nome, classe, atributos, modificadores) #recebe Jogador
 
 import time
 
