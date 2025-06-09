@@ -86,7 +86,7 @@ def criar_personagem():
 
 import time
 
-def narrar(texto, atraso=2):
+def narrar(texto, atraso=1):
     for linha in texto.split('\n'):
         print(linha)
         time.sleep(atraso)
@@ -111,7 +111,7 @@ E é para esse mundo encantado que você foi chamado. Um destino ainda não escr
 """
 
 # Executar a narração
-narrar(introducao_reino, atraso=2)
+narrar(introducao_reino, atraso=1)
 
 
 # Classe Personagem
@@ -235,13 +235,6 @@ inimigo_test4 = Personagem(   #Copia e cola isso pq como usamos class vai ter q 
 nome, classe, atributos, modificadores = criar_personagem()
 jogador = Personagem(nome, classe, atributos, modificadores) #recebe Jogador
 
-import time
-
-def narrar(texto, atraso=2):
-    for linha in texto.strip().split('\n'):
-        print(linha)
-        time.sleep(atraso)
-    print()
 
 def escolher_opcao(pergunta, opcoes):
     print(pergunta)
@@ -318,6 +311,7 @@ elif resposta3 == 3:
 
 narrar("Os soldados trocam olhares e assentem com a cabeça.\nSoldado alto: — Muito bem. Siga-nos. Sua audiência com o rei o aguarda.\n")
 
+narrar(parte2, atraso=1)
 
 parte3 = """
 Parte 3: Diante do Rei Julian IV
@@ -385,14 +379,7 @@ Rei Julian IV:
 Irá para as Terras da Floresta Putrida, mas o caminho... passa primeiro por um deserto.
 Prepare-se.
 """
-
-import time
-
-def narrar(texto, atraso=1):
-    for linha in texto.strip().split('\n'):
-        print(linha)
-        time.sleep(atraso)
-    print()
+narrar(parte3, atraso=1)
 
 parte4 = """
 Muito além das muralhas, há um lugar onde o verde virou cinza.
@@ -415,6 +402,7 @@ Mas há vida — escorpiões de cristal, serpentes de fogo e aves que deixam ras
 No centro, uma cidade abandonada feita de vidro partido se ergue como um espelho da própria loucura.
 A areia sussurra nomes... talvez o seu.
 """
+narrar(parte4, atraso=1)
 
 narraçãoDZRTO = """
 O calor não apenas consome — ele pesa.
@@ -437,15 +425,11 @@ Seus guinchos parecem riscar o ar, como navalhas.
 A tensão cresce. Algo o observa.
 Mas a estrada chama, e o deserto... nunca se cala.
 """
+
+narrar(narraçãoDZRTO, atraso=1)
+
 combate(inimigo_test2)
 
-import time
-
-def narrar(texto, atraso=1):
-    for linha in texto.strip().split('\n'):
-        print(linha)
-        time.sleep(atraso)
-    print()
 
 def encontro_bandidos():
     narrar("""
@@ -515,7 +499,6 @@ Os bandidos batem em retirada, deixando para trás apenas pegadas e risos.
 """)
 
 #Chamada da função
-encontro_bandidos()
 
 def narrar(texto, atraso=1):
     for linha in texto.strip().split('\n'):
@@ -539,11 +522,6 @@ Esses olhos não servem para enxergar no escuro, mas para hipnotizar presas desa
 Voam em bandos de 3 a 8, usando uma comunicação sonora aguda quase inaudível para humanos. 
 O som deles incomoda criaturas maiores e pode causar desorientação leve.""")
     
-def narrar(texto, atraso=1):
-    for linha in texto.strip().split('\n'):
-        print(linha)
-        time.sleep(atraso)
-    print()
 
 def narração_solitária ():
     narrar("""Narração: Travessia Solitária
@@ -573,7 +551,3 @@ Uma escadaria desce até as entranhas da ruína, protegida apenas pela escuridã
 
 
 # Iniciar o combate
-combate(inimigo_test1) #Sempre q for iniciar o combate la no inimigo test muda pra a criatura especifica
-combate(inimigo_test3)
-
-combate(inimigo_test4)
