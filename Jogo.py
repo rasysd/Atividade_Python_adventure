@@ -123,7 +123,8 @@ class Personagem:
         self.atributos = atributos
         self.modificadores = modificadores
         self.atributo_ataque = self.definir_atributo_ataque()
-        self.hp = self.vida_inicial()
+        self.hp_max = self.vida_inicial()
+        self.hp = self.hp_max
 
     def definir_atributo_ataque(self):
         return {
@@ -144,6 +145,12 @@ class Personagem:
         }
         base_hp = base_hp_por_classe.get(self.classe, 20)
         return base_hp + self.modificadores["Constituição"]
+    
+    def usar_pocao(self, quantidade):
+        hp_antes = self.hp
+        self.hp = min(self.hp + quantidade, self.hp_max)
+        print(f"{self.nome} usou uma poção e recuperou {self.hp - hp_antes} de vida. (HP: {self.hp}/{self.hp_max})")
+
 
     def atacar(self, alvo):
         rolagem = rolar_dado(20)
@@ -175,16 +182,18 @@ def combate(inimigo):
         defensor = turno[1]
 
         if atacante == jogador:
-            acao = input("Digite 'A' para atacar ou 'F' para fugir: ").strip().upper()
-            if acao == "F":
+            acao = input("Digite '1' para atacar, '2' para poção ou '3' para fugir: ").strip().upper()
+            if acao == "3":
                 if rolar_dado(20) >= 15:
                     print("Você fugiu com sucesso!")
                     return
                 else:
                     print("Você falhou em fugir!")
                     atacante.atacar(defensor)
-            elif acao == "A":
+            elif acao == "1":
                 atacante.atacar(defensor)
+            elif acao == "2":
+                atacante.usar_poção(10)
             else:
                 print("Comando inválido!")
         else:
@@ -536,32 +545,32 @@ Uma escadaria desce até as entranhas da ruína, protegida apenas pela escuridã
 
 #resolvendo ak
 
-inimigo_test = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
+inimigo_test1 = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
     "Esqueleto","Arqueiro", #muda o nome da criatura e sua classe
     {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6}, 
     {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2} #Muda apenas os parametros
 )
 
-inimigo_test = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
+inimigo_test2 = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
     "Esqueleto","Arqueiro", #muda o nome da criatura e sua classe
     {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6}, 
     {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2} #Muda apenas os parametros
 )
 
-inimigo_test = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
+inimigo_test3 = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
     "Esqueleto","Arqueiro", #muda o nome da criatura e sua classe
     {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6}, 
     {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2} #Muda apenas os parametros
 )
 
-inimigo_test = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
+inimigo_test4 = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
     "Esqueleto","Arqueiro", #muda o nome da criatura e sua classe
     {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6}, 
     {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2} #Muda apenas os parametros
 )
 
 # Iniciar o combate
-combate(inimigo_test) #Sempre q for iniciar o combate la no inimigo test muda pra a criatura especifica
-combate(inimigo_test)
-combate(inimigo_test)
-combate(inimigo_test)
+combate(inimigo_test1) #Sempre q for iniciar o combate la no inimigo test muda pra a criatura especifica
+combate(inimigo_test3)
+combate(inimigo_test2)
+combate(inimigo_test4)
