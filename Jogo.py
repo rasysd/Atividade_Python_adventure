@@ -207,6 +207,30 @@ def combate(inimigo):
     else:
         print(f"{jogador.nome} foi derrotado...")
 
+inimigo_test1 = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
+    "Esqueleto","Arqueiro", #muda o nome da criatura e sua classe
+    {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6}, 
+    {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2} #Muda apenas os parametros
+)
+
+inimigo_test2 = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
+    "mirraquelos","Guerreiro", #muda o nome da criatura e sua classe
+    {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6}, 
+    {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2} #Muda apenas os parametros
+)
+
+inimigo_test3 = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
+    "zumbi","Bruxo", #muda o nome da criatura e sua classe
+    {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6}, 
+    {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2} #Muda apenas os parametros
+)
+
+inimigo_test4 = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
+    "ghost","Guerreiro", #muda o nome da criatura e sua classe
+    {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6}, 
+    {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2} #Muda apenas os parametros
+)
+
 
 nome, classe, atributos, modificadores = criar_personagem()
 jogador = Personagem(nome, classe, atributos, modificadores) #recebe Jogador
@@ -413,6 +437,7 @@ Seus guinchos parecem riscar o ar, como navalhas.
 A tensão cresce. Algo o observa.
 Mas a estrada chama, e o deserto... nunca se cala.
 """
+combate(inimigo_test2)
 
 import time
 
@@ -545,32 +570,10 @@ Uma escadaria desce até as entranhas da ruína, protegida apenas pela escuridã
 
 #resolvendo ak
 
-inimigo_test1 = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
-    "Esqueleto","Arqueiro", #muda o nome da criatura e sua classe
-    {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6}, 
-    {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2} #Muda apenas os parametros
-)
 
-inimigo_test2 = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
-    "Esqueleto","Arqueiro", #muda o nome da criatura e sua classe
-    {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6}, 
-    {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2} #Muda apenas os parametros
-)
-
-inimigo_test3 = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
-    "Esqueleto","Arqueiro", #muda o nome da criatura e sua classe
-    {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6}, 
-    {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2} #Muda apenas os parametros
-)
-
-inimigo_test4 = Personagem(   #Copia e cola isso pq como usamos class vai ter q ser desse tamanho todas as vezes
-    "Esqueleto","Arqueiro", #muda o nome da criatura e sua classe
-    {"Constituição": 12, "Força": 10, "Destreza": 8, "Inteligência": 6, "Sabedoria": 6, "Carisma": 6}, 
-    {"Constituição": 1, "Força": 0, "Destreza": -1, "Inteligência": -2, "Sabedoria": -2, "Carisma": -2} #Muda apenas os parametros
-)
 
 # Iniciar o combate
 combate(inimigo_test1) #Sempre q for iniciar o combate la no inimigo test muda pra a criatura especifica
 combate(inimigo_test3)
-combate(inimigo_test2)
+
 combate(inimigo_test4)
